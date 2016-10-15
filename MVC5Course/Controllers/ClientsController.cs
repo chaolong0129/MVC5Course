@@ -41,7 +41,10 @@ namespace MVC5Course.Controllers
         public ActionResult Create()
         {
             ViewBag.OccupationId = new SelectList(db.Occupation, "OccupationId", "OccupationName");
-            return View();
+            Client client = new Client();
+            client.Gender = "M";
+
+            return View(client);
         }
 
         public ActionResult NextPage()
