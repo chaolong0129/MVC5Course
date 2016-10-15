@@ -40,6 +40,8 @@ namespace MVC5Course.Models
         [RegularExpression("[MF]", ErrorMessage = "Gender 欄位只能輸入 M 或是 F")]
         public string Gender { get; set; }
         [DisplayName("生日")]
+        [DisplayFormat(DataFormatString = "{0 : MM/dd/yyyy}" , ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> DateOfBirth { get; set; }
         [DisplayName("信用評等")]
         public Nullable<double> CreditRating { get; set; }

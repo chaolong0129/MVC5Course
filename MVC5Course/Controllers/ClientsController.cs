@@ -46,16 +46,17 @@ namespace MVC5Course.Controllers
 
         public ActionResult NextPage()
         {
+            
+            var client = db.Client.OrderByDescending(c => c.ClientId ).Take(10).Where(c => c.ClientId > pidx * 10).ToList();
             pidx += 1;
-            var client = db.Client.OrderByDescending(c => c.ClientId).Take(10).ToList();
-
             //var client = db.Client.Include(c => c.Occupation);
-            return View(client);
+            return View();
         }
 
         public ActionResult FirstPage()
         {
             pidx -= 1;
+            var client = db.Client.OrderByDescending(c => c.ClientId).Take(10).Where(c => c.ClientId > pidx * 10).ToList();
             return View();
         }
 
