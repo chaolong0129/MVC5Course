@@ -29,6 +29,7 @@
         <th>
             @Html.DisplayNameFor(model => model.CreditRating)
         </th>
+                        <!--
         <th>
             @Html.DisplayNameFor(model => model.XCode)
         </th>
@@ -47,7 +48,7 @@
         <th>
             @Html.DisplayNameFor(model => model.ZipCode)
         </th>
-        <!--
+
         <th>
             @Html.DisplayNameFor(model => model.Longitude)
         </th>
@@ -57,10 +58,11 @@
         <th>
             @Html.DisplayNameFor(model => model.Notes)
         </th>
-            -->
+
         <th>
             @Html.DisplayNameFor(model => model.Occupation.OccupationName)
         </th>
+                                -->
         <th></th>
     </tr>
 
@@ -84,12 +86,14 @@
         <td>
             @Html.DisplayFor(modelItem => item.CreditRating)
         </td>
+                        <!--
         <td>
             @Html.DisplayFor(modelItem => item.XCode)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.TelephoneNumber)
         </td>
+
         <td>
             @Html.DisplayFor(modelItem => item.Street1)
         </td>
@@ -102,7 +106,6 @@
         <td>
             @Html.DisplayFor(modelItem => item.ZipCode)
         </td>
-        <!--
         <td>
             @Html.DisplayFor(modelItem => item.Longitude)
         </td>
@@ -112,10 +115,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.Notes)
         </td>
-            -->
+       
         <td>
             @Html.DisplayFor(modelItem => item.Occupation.OccupationName)
         </td>
+                         -->
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ClientId }) |
             @Html.ActionLink("Details", "Details", new { id=item.ClientId }) |
