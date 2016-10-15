@@ -14,13 +14,30 @@ namespace MVC5Course.Controllers
     {
         private FabricsEntities db = new FabricsEntities();
         int pidx = 1;
-        // GET: Clients
-        public ActionResult Index()
+        public ActionResult Index(string search)
         {
-            var client = db.Client.OrderByDescending(c => c.ClientId).Take(10).ToList();
+            List<Client> client;
+            if (search != "")
+            {
+                 client = db.Client.OrderByDescending(c => c.ClientId).Where(c => c.FirstName == search).Take(10).ToList();
+                //var client = db.Client.Include(c => c.Occupation);
+                
+            }
+            else
+            {
+                client = db.Client.OrderByDescending(c => c.ClientId).Take(10).ToList();
+            }
+
             //var client = db.Client.Include(c => c.Occupation);
             return View(client);
         }
+        // GET: Clients
+        //public ActionResult Index()
+        //{
+        //    var client = db.Client.OrderByDescending(c => c.ClientId).Take(10).ToList();
+        //    //var client = db.Client.Include(c => c.Occupation);
+        //    return View(client);
+        //}
 
         // GET: Clients/Details/5
         public ActionResult Details(int? id)
