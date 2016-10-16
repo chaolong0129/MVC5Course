@@ -102,6 +102,14 @@ namespace MVC5Course.Controllers
             {
                 return HttpNotFound();
             }
+
+            if (product.isDeleted == true)
+            {
+                db.OrderLine.RemoveRange(product.OrderLine);
+                db.Product.Remove(product);
+                db.SaveChanges();
+            }
+
             return View(product);
         }
 
@@ -111,10 +119,14 @@ namespace MVC5Course.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Product product = db.Product.Find(id);
-            db.Product.Remove(product);
+
+            product.isDeleted = true;
+
+            // db.Product.Remove(product);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
 
         protected override void Dispose(bool disposing)
         {
