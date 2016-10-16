@@ -108,6 +108,7 @@ namespace MVC5Course.Controllers
                 db.OrderLine.RemoveRange(product.OrderLine);
                 db.Product.Remove(product);
                 db.SaveChanges();
+                return RedirectToAction("index");
             }
 
             return View(product);
@@ -120,9 +121,13 @@ namespace MVC5Course.Controllers
         {
             Product product = db.Product.Find(id);
 
-            product.isDeleted = true;
-
-            // db.Product.Remove(product);
+            if (product.isDeleted)
+            {
+                db.Product.Remove(product);
+            }
+            else {
+                product.isDeleted = true;
+            }
             db.SaveChanges();
             return RedirectToAction("Index");
         }
