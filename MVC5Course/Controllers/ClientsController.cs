@@ -13,12 +13,25 @@ namespace MVC5Course.Controllers
 {
     public class ClientsController : Controller
     {
-        private FabricsEntities db = new FabricsEntities();
+        private FabricsEntities db = new FabricsEntities(); // orm interface, object Service
         int pidx = 1;
         // GET: Clients
         public ActionResult Index(string search)
         {
+
+            /* Linq 
+             var data = from p in db.client
+                        where p.firstname.contains(search)
+                        select new {
+                            p.firstname,
+                            p.lastname
+                        }
+             */
+
+            
             var client = db.Client.Include(c => c.Occupation);
+
+
 
             if (!string.IsNullOrEmpty(search)) {
                 client = client.Where(p => p.FirstName.Contains(search));
