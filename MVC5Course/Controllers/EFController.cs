@@ -46,10 +46,16 @@ namespace MVC5Course.Controllers
         
         public ActionResult Delete(int id)
         {
-            var product = db.Product.Find(id);
-            db.Product.Remove(product);
+            // Single item delete and it could meet the Exception when the data has relation with other table.
+            //var product = db.Product.Find(id);
+            //db.Product.Remove(product);
+            //db.SaveChanges();
+            var pentity = db.Product.Find(id);
+            db.OrderLine.RemoveRange(pentity.OrderLine);
+            db.Product.Remove(pentity);
             db.SaveChanges();
             return RedirectToAction("Index");
+
         }
 
         public ActionResult Update(int id)
@@ -89,5 +95,6 @@ namespace MVC5Course.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
     }
 }
