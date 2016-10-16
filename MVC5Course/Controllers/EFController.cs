@@ -90,6 +90,14 @@ namespace MVC5Course.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Add20Percent2()
+        {
+            string param = "%White%";
+            db.Database.ExecuteSqlCommand("Update dbo.Product Set Price=Price*1.2 Where ProductName Like  @p0", param);
+
+            return RedirectToAction("Index");
+        }
+
         public ActionResult Discount20Percent()
         {
             var data = db.Product;

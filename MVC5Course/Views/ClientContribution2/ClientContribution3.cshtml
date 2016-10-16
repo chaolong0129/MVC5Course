@@ -1,11 +1,14 @@
-﻿@model IEnumerable<MVC5Course.Models.vw_ClientContribution>
+﻿@model IEnumerable<MVC5Course.Models.ViewModels.ClientContributionModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "ClientContribution3";
 }
 
-<h2>Index</h2>
+<h2>ClientContribution3</h2>
 
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
 <table class="table">
     <tr>
         <th>
@@ -32,7 +35,9 @@
             @Html.DisplayFor(modelItem => item.OrderTotal)
         </td>
         <td>
-            @Html.ActionLink("Details", "Details", new { id = item.ClientId })
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
         </td>
     </tr>
 }
